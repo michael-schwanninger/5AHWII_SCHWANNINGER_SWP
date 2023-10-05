@@ -7,14 +7,15 @@ def generate_array():
 
 
 def generate_random(new_range):
-    return random.randrange(0, new_range)
+    return random.randint(0, new_range)
 
 
-def get_numbers(array, nbr_swaps: int):
-    for i in range(nbr_swaps):
-        random_index = generate_random(len(array) - 1)
-        array[random_index], array[len(array) - 1 - i] = array[len(array) - 1 - i], array[random_index]
-    return array[len(array) - nbr_swaps:]
+def get_numbers(number_array, nbr_swaps: int):
+    array = number_array.copy()
+    for number in range(nbr_swaps):
+        random_index = generate_random(len(array) - 1 - number)
+        array[random_index], array[len(array) - 1 - number] = array[len(array) - 1 - number], array[random_index]
+    return array[- nbr_swaps:]
 
 
 def generate_dict(array):
@@ -22,8 +23,8 @@ def generate_dict(array):
 
 
 def add_to_statistic(array, dictionary):
-    for i in array:
-        dictionary[i] += 1
+    for index in array:
+        dictionary[index] += 1
 
 
 numbers = generate_array()
