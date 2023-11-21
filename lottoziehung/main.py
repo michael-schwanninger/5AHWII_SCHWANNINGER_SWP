@@ -10,7 +10,7 @@ def generate_random(new_range):
     return random.randint(0, new_range)
 
 
-def get_numbers(number_array, nbr_swaps: int):
+def get_numbers(number_array, nbr_swaps):
     array = number_array.copy()
     for number in range(nbr_swaps):
         random_index = generate_random(len(array) - 1 - number)
