@@ -1,3 +1,6 @@
+from Aufgaben.poker.timer_decorator import timer
+
+
 # - 0 - 2
 # - 1 - 3
 # - 2 - 4
@@ -12,6 +15,7 @@
 # - 11 - K
 # - 12 - A
 
+
 # //13 for color | %13 for value
 
 
@@ -23,6 +27,7 @@ def getValue(card):
     return card % 13
 
 
+@timer
 def poker_hands(cards):
     cards.sort()
 

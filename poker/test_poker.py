@@ -2,7 +2,7 @@ import unittest
 from combinations import poker_hands
 
 
-class TestPoker(unittest.TestCase):
+class test_poker(unittest.TestCase):
 
     def test_flush(self):
         self.assertEqual(poker_hands([1, 2, 3, 7, 12]), "flush")
@@ -18,6 +18,11 @@ class TestPoker(unittest.TestCase):
 
     def test_pair(self):
         self.assertEqual(poker_hands([1, 2, 3, 4, 14]), "pair")
+
+    def test_special_straight(self):
+        self.assertEqual(poker_hands([13, 1, 2, 3, 12]), "straight")
+        # 0 instead of 13 -> straight_flush
+
 
 if __name__ == '__main__':
     unittest.main()
