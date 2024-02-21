@@ -1,4 +1,5 @@
 import time
+list_times = []
 
 
 def timer(func):
@@ -7,7 +8,7 @@ def timer(func):
         value = func(*args, **kwargs)
         end_time = time.perf_counter()
         run_time = end_time - start_time
-        print(f"Finished {func.__name__}() in {run_time:.10f} secs")
+        list_times.append(run_time)
         return value
 
     return wrapper_timer

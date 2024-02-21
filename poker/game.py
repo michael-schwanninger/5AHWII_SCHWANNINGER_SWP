@@ -1,4 +1,6 @@
 import sys
+
+from Aufgaben.poker import timer_decorator
 from statistic import statistics
 from charts import create_chart
 
@@ -9,6 +11,8 @@ def play():
     print(stats[0])
     print("\nDeviation from wiki data:\n")
     print(stats[1])
+    average_times = sum(timer_decorator.list_times) / len(timer_decorator.list_times)
+    print(f"\nAverage time for poker hand method: {average_times:.10f} secs")
     create_chart(stats[0])
 
 
