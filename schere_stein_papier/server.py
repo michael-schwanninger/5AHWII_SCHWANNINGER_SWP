@@ -1,11 +1,18 @@
 from flask import Flask, render_template, request, jsonify
 from sqlalchemy import Column, Integer, create_engine, Text
-
 from sqlalchemy.orm import declarative_base, scoped_session, sessionmaker
+import configparser
+
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+
 
 Base = declarative_base()
 metadata = Base.metadata
-engine = create_engine('sqlite:///statistics.sqlite3')
+path = config.get('Database', 'path')
+database = "sqlite:///" + path
+engine = create_engine(str(database))
 db_session = scoped_session(sessionmaker(autoflush=True, bind=engine))
 Base.query = db_session.query_property()
 app = Flask(__name__)

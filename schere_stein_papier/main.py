@@ -2,6 +2,11 @@ import random
 import json
 import matplotlib.pyplot as plt
 import requests
+import configparser
+
+
+config = configparser.ConfigParser()
+config.read('config.ini')
 
 
 class Rock:
@@ -113,7 +118,11 @@ def menu(name_winners, name_statistics):
             show_statistics(winner_statistics)
         elif choice == '3':
             save_statistics(option_statistics, "statistics")
-            res = requests.post("http://localhost:5000/upload_statistics", json=option_statistics)
+            server_host = config.get('Server', 'host')
+            server_port = config.get('Server', 'port')
+            url = f"http://{server_host}:{server_port}/upload_statistics"
+            print(url)
+            res = requests.post(url, json=option_statistics)
             save_statistics(winner_statistics, "winners")
             break
         else:
